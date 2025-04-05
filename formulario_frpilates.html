@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ficha de Avaliação - Fr Pilates</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .watermark {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 48px;
+      color: rgba(0, 0, 0, 0.05);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    h1,
+    h2 {
+      text-align: center;
+      z-index: 1;
+      position: relative;
+    }
+
+    form {
+      z-index: 1;
+      position: relative;
+    }
+
+    .form-section {
+      margin-bottom: 20px;
+    }
+
+    .form-section label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-section input[type="text"],
+    .form-section input[type="number"],
+    .form-section textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .form-section textarea {
+      resize: vertical;
+    }
+
+    .submit-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      background: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="watermark">Fr Pilates</div>
+    <h1>Ficha de Avaliação - Fr Pilates</h1>
+    <form>
+
+      <!-- Dados Pessoais -->
+      <div class="form-section">
+        <h2>1. Dados Pessoais</h2>
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" required>
+
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" required>
+
+        <label for="profissao">Profissão:</label>
+        <input type="text" id="profissao">
+
+        <label for="contato">Contato (telefone/e-mail):</label>
+        <input type="text" id="contato">
+
+        <label for="conheceu">Como conheceu o estúdio?</label>
+        <input type="text" id="conheceu">
+      </div>
+
+      <!-- Queixa Principal -->
+      <div class="form-section">
+        <h2>2. Queixa Principal</h2>
+        <label for="motivo">Motivo da consulta:</label>
+        <textarea id="motivo" rows="3"></textarea>
+
+        <label for="descricao">Descrição de dores ou desconfortos:</label>
+        <textarea id="descricao" rows="3"></textarea>
+
+        <label for="localizacao">Localização (marque na imagem):</label>
+        <input type="text" id="localizacao">
+
+        <label for="tempo">Tempo de ocorrência:</label>
+        <input type="text" id="tempo">
+
+        <label for="diagnostico">Diagnóstico médico (se houver):</label>
+        <input type="text" id="diagnostico">
+      </div>
+
+      <button type="button" onclick="enviarWhatsApp()" class="submit-btn">Enviar Avaliação</button>
+    </form>
+  </div>
+
+  <script>
+    function enviarWhatsApp() {
+      let mensagem = `*Ficha de Avaliação - Fr Pilates*\n\n` +
+        `Nome: ${document.getElementById('nome').value}\n` +
+        `Idade: ${document.getElementById('idade').value}\n` +
+        `Profissão: ${document.getElementById('profissao').value}\n` +
+        `Contato: ${document.getElementById('contato').value}\n` +
+        `Como conheceu: ${document.getElementById('conheceu').value}\n\n` +
+        `Motivo da consulta: ${document.getElementById('motivo').value}\n` +
+        `Descrição das dores: ${document.getElementById('descricao').value}\n` +
+        `Localização: ${document.getElementById('localizacao').value}\n` +
+        `Tempo: ${document.getElementById('tempo').value}\n` +
+        `Diagnóstico: ${document.getElementById('diagnostico').value}`;
+
+      let url = `https://wa.me/5511992104464?text=${encodeURIComponent(mensagem)}`;
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+
+</html>
